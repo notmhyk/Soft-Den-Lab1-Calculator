@@ -1,5 +1,5 @@
 import tkinter as tk
-
+from tkinter import messagebox
 class MainPage(tk.Tk): 
     def __init__(self):
         tk.Tk.__init__(self)
@@ -134,6 +134,14 @@ class MainPage(tk.Tk):
         self.text_strVar.set(new_text)
 
     def validate_input(self, new_text):
+        decimal = 0
+        newStr = new_text.split()
+        for dec in newStr:
+            if dec == '.':
+                decimal += 1
+            if decimal > 1:
+                messagebox.showerror("invalid input", "Error")
+                return
         if new_text.isdigit() or new_text == "":
             return True
         else:
